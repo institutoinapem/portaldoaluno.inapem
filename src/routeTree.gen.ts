@@ -9,50 +9,508 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as ShellRouteImport } from './routes/_shell'
+import { Route as ShellIndexRouteImport } from './routes/_shell.index'
+import { Route as ShellSubscriptionsRouteImport } from './routes/_shell.subscriptions'
+import { Route as ShellSettingsRouteImport } from './routes/_shell.settings'
+import { Route as ShellScheduleRouteImport } from './routes/_shell.schedule'
+import { Route as ShellProgressRouteImport } from './routes/_shell.progress'
+import { Route as ShellProfileRouteImport } from './routes/_shell.profile'
+import { Route as ShellNotificationsRouteImport } from './routes/_shell.notifications'
+import { Route as ShellMyCoursesRouteImport } from './routes/_shell.my-courses'
+import { Route as ShellMaterialsRouteImport } from './routes/_shell.materials'
+import { Route as ShellHistoryRouteImport } from './routes/_shell.history'
+import { Route as ShellHelpRouteImport } from './routes/_shell.help'
+import { Route as ShellFinanceRouteImport } from './routes/_shell.finance'
+import { Route as ShellFavoritesRouteImport } from './routes/_shell.favorites'
+import { Route as ShellCoursesRouteImport } from './routes/_shell.courses'
+import { Route as ShellCommunityRouteImport } from './routes/_shell.community'
+import { Route as ShellCheckoutRouteImport } from './routes/_shell.checkout'
+import { Route as ShellChatRouteImport } from './routes/_shell.chat'
+import { Route as ShellCertificatesRouteImport } from './routes/_shell.certificates'
+import { Route as ShellCartRouteImport } from './routes/_shell.cart'
+import { Route as ShellLessonsIdRouteImport } from './routes/_shell.lessons.$id'
+import { Route as ShellCoursesIdRouteImport } from './routes/_shell.courses.$id'
 
-const IndexRoute = IndexRouteImport.update({
+const ShellRoute = ShellRouteImport.update({
+  id: '/_shell',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShellIndexRoute = ShellIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellSubscriptionsRoute = ShellSubscriptionsRouteImport.update({
+  id: '/subscriptions',
+  path: '/subscriptions',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellSettingsRoute = ShellSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellScheduleRoute = ShellScheduleRouteImport.update({
+  id: '/schedule',
+  path: '/schedule',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellProgressRoute = ShellProgressRouteImport.update({
+  id: '/progress',
+  path: '/progress',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellProfileRoute = ShellProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellNotificationsRoute = ShellNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellMyCoursesRoute = ShellMyCoursesRouteImport.update({
+  id: '/my-courses',
+  path: '/my-courses',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellMaterialsRoute = ShellMaterialsRouteImport.update({
+  id: '/materials',
+  path: '/materials',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellHistoryRoute = ShellHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellHelpRoute = ShellHelpRouteImport.update({
+  id: '/help',
+  path: '/help',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellFinanceRoute = ShellFinanceRouteImport.update({
+  id: '/finance',
+  path: '/finance',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellFavoritesRoute = ShellFavoritesRouteImport.update({
+  id: '/favorites',
+  path: '/favorites',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellCoursesRoute = ShellCoursesRouteImport.update({
+  id: '/courses',
+  path: '/courses',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellCommunityRoute = ShellCommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellCheckoutRoute = ShellCheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellChatRoute = ShellChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellCertificatesRoute = ShellCertificatesRouteImport.update({
+  id: '/certificates',
+  path: '/certificates',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellCartRoute = ShellCartRouteImport.update({
+  id: '/cart',
+  path: '/cart',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellLessonsIdRoute = ShellLessonsIdRouteImport.update({
+  id: '/lessons/$id',
+  path: '/lessons/$id',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellCoursesIdRoute = ShellCoursesIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => ShellCoursesRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
+  '/': typeof ShellIndexRoute
+  '/cart': typeof ShellCartRoute
+  '/certificates': typeof ShellCertificatesRoute
+  '/chat': typeof ShellChatRoute
+  '/checkout': typeof ShellCheckoutRoute
+  '/community': typeof ShellCommunityRoute
+  '/courses': typeof ShellCoursesRouteWithChildren
+  '/favorites': typeof ShellFavoritesRoute
+  '/finance': typeof ShellFinanceRoute
+  '/help': typeof ShellHelpRoute
+  '/history': typeof ShellHistoryRoute
+  '/materials': typeof ShellMaterialsRoute
+  '/my-courses': typeof ShellMyCoursesRoute
+  '/notifications': typeof ShellNotificationsRoute
+  '/profile': typeof ShellProfileRoute
+  '/progress': typeof ShellProgressRoute
+  '/schedule': typeof ShellScheduleRoute
+  '/settings': typeof ShellSettingsRoute
+  '/subscriptions': typeof ShellSubscriptionsRoute
+  '/courses/$id': typeof ShellCoursesIdRoute
+  '/lessons/$id': typeof ShellLessonsIdRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
+  '/cart': typeof ShellCartRoute
+  '/certificates': typeof ShellCertificatesRoute
+  '/chat': typeof ShellChatRoute
+  '/checkout': typeof ShellCheckoutRoute
+  '/community': typeof ShellCommunityRoute
+  '/courses': typeof ShellCoursesRouteWithChildren
+  '/favorites': typeof ShellFavoritesRoute
+  '/finance': typeof ShellFinanceRoute
+  '/help': typeof ShellHelpRoute
+  '/history': typeof ShellHistoryRoute
+  '/materials': typeof ShellMaterialsRoute
+  '/my-courses': typeof ShellMyCoursesRoute
+  '/notifications': typeof ShellNotificationsRoute
+  '/profile': typeof ShellProfileRoute
+  '/progress': typeof ShellProgressRoute
+  '/schedule': typeof ShellScheduleRoute
+  '/settings': typeof ShellSettingsRoute
+  '/subscriptions': typeof ShellSubscriptionsRoute
+  '/': typeof ShellIndexRoute
+  '/courses/$id': typeof ShellCoursesIdRoute
+  '/lessons/$id': typeof ShellLessonsIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
+  '/_shell': typeof ShellRouteWithChildren
+  '/_shell/cart': typeof ShellCartRoute
+  '/_shell/certificates': typeof ShellCertificatesRoute
+  '/_shell/chat': typeof ShellChatRoute
+  '/_shell/checkout': typeof ShellCheckoutRoute
+  '/_shell/community': typeof ShellCommunityRoute
+  '/_shell/courses': typeof ShellCoursesRouteWithChildren
+  '/_shell/favorites': typeof ShellFavoritesRoute
+  '/_shell/finance': typeof ShellFinanceRoute
+  '/_shell/help': typeof ShellHelpRoute
+  '/_shell/history': typeof ShellHistoryRoute
+  '/_shell/materials': typeof ShellMaterialsRoute
+  '/_shell/my-courses': typeof ShellMyCoursesRoute
+  '/_shell/notifications': typeof ShellNotificationsRoute
+  '/_shell/profile': typeof ShellProfileRoute
+  '/_shell/progress': typeof ShellProgressRoute
+  '/_shell/schedule': typeof ShellScheduleRoute
+  '/_shell/settings': typeof ShellSettingsRoute
+  '/_shell/subscriptions': typeof ShellSubscriptionsRoute
+  '/_shell/': typeof ShellIndexRoute
+  '/_shell/courses/$id': typeof ShellCoursesIdRoute
+  '/_shell/lessons/$id': typeof ShellLessonsIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/cart'
+    | '/certificates'
+    | '/chat'
+    | '/checkout'
+    | '/community'
+    | '/courses'
+    | '/favorites'
+    | '/finance'
+    | '/help'
+    | '/history'
+    | '/materials'
+    | '/my-courses'
+    | '/notifications'
+    | '/profile'
+    | '/progress'
+    | '/schedule'
+    | '/settings'
+    | '/subscriptions'
+    | '/courses/$id'
+    | '/lessons/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/cart'
+    | '/certificates'
+    | '/chat'
+    | '/checkout'
+    | '/community'
+    | '/courses'
+    | '/favorites'
+    | '/finance'
+    | '/help'
+    | '/history'
+    | '/materials'
+    | '/my-courses'
+    | '/notifications'
+    | '/profile'
+    | '/progress'
+    | '/schedule'
+    | '/settings'
+    | '/subscriptions'
+    | '/'
+    | '/courses/$id'
+    | '/lessons/$id'
+  id:
+    | '__root__'
+    | '/_shell'
+    | '/_shell/cart'
+    | '/_shell/certificates'
+    | '/_shell/chat'
+    | '/_shell/checkout'
+    | '/_shell/community'
+    | '/_shell/courses'
+    | '/_shell/favorites'
+    | '/_shell/finance'
+    | '/_shell/help'
+    | '/_shell/history'
+    | '/_shell/materials'
+    | '/_shell/my-courses'
+    | '/_shell/notifications'
+    | '/_shell/profile'
+    | '/_shell/progress'
+    | '/_shell/schedule'
+    | '/_shell/settings'
+    | '/_shell/subscriptions'
+    | '/_shell/'
+    | '/_shell/courses/$id'
+    | '/_shell/lessons/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
+  ShellRoute: typeof ShellRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
+    '/_shell': {
+      id: '/_shell'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof ShellRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_shell/': {
+      id: '/_shell/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof ShellIndexRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/subscriptions': {
+      id: '/_shell/subscriptions'
+      path: '/subscriptions'
+      fullPath: '/subscriptions'
+      preLoaderRoute: typeof ShellSubscriptionsRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/settings': {
+      id: '/_shell/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof ShellSettingsRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/schedule': {
+      id: '/_shell/schedule'
+      path: '/schedule'
+      fullPath: '/schedule'
+      preLoaderRoute: typeof ShellScheduleRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/progress': {
+      id: '/_shell/progress'
+      path: '/progress'
+      fullPath: '/progress'
+      preLoaderRoute: typeof ShellProgressRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/profile': {
+      id: '/_shell/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ShellProfileRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/notifications': {
+      id: '/_shell/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof ShellNotificationsRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/my-courses': {
+      id: '/_shell/my-courses'
+      path: '/my-courses'
+      fullPath: '/my-courses'
+      preLoaderRoute: typeof ShellMyCoursesRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/materials': {
+      id: '/_shell/materials'
+      path: '/materials'
+      fullPath: '/materials'
+      preLoaderRoute: typeof ShellMaterialsRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/history': {
+      id: '/_shell/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof ShellHistoryRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/help': {
+      id: '/_shell/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof ShellHelpRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/finance': {
+      id: '/_shell/finance'
+      path: '/finance'
+      fullPath: '/finance'
+      preLoaderRoute: typeof ShellFinanceRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/favorites': {
+      id: '/_shell/favorites'
+      path: '/favorites'
+      fullPath: '/favorites'
+      preLoaderRoute: typeof ShellFavoritesRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/courses': {
+      id: '/_shell/courses'
+      path: '/courses'
+      fullPath: '/courses'
+      preLoaderRoute: typeof ShellCoursesRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/community': {
+      id: '/_shell/community'
+      path: '/community'
+      fullPath: '/community'
+      preLoaderRoute: typeof ShellCommunityRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/checkout': {
+      id: '/_shell/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof ShellCheckoutRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/chat': {
+      id: '/_shell/chat'
+      path: '/chat'
+      fullPath: '/chat'
+      preLoaderRoute: typeof ShellChatRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/certificates': {
+      id: '/_shell/certificates'
+      path: '/certificates'
+      fullPath: '/certificates'
+      preLoaderRoute: typeof ShellCertificatesRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/cart': {
+      id: '/_shell/cart'
+      path: '/cart'
+      fullPath: '/cart'
+      preLoaderRoute: typeof ShellCartRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/lessons/$id': {
+      id: '/_shell/lessons/$id'
+      path: '/lessons/$id'
+      fullPath: '/lessons/$id'
+      preLoaderRoute: typeof ShellLessonsIdRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/courses/$id': {
+      id: '/_shell/courses/$id'
+      path: '/$id'
+      fullPath: '/courses/$id'
+      preLoaderRoute: typeof ShellCoursesIdRouteImport
+      parentRoute: typeof ShellCoursesRoute
     }
   }
 }
 
+interface ShellCoursesRouteChildren {
+  ShellCoursesIdRoute: typeof ShellCoursesIdRoute
+}
+
+const ShellCoursesRouteChildren: ShellCoursesRouteChildren = {
+  ShellCoursesIdRoute: ShellCoursesIdRoute,
+}
+
+const ShellCoursesRouteWithChildren = ShellCoursesRoute._addFileChildren(
+  ShellCoursesRouteChildren,
+)
+
+interface ShellRouteChildren {
+  ShellCartRoute: typeof ShellCartRoute
+  ShellCertificatesRoute: typeof ShellCertificatesRoute
+  ShellChatRoute: typeof ShellChatRoute
+  ShellCheckoutRoute: typeof ShellCheckoutRoute
+  ShellCommunityRoute: typeof ShellCommunityRoute
+  ShellCoursesRoute: typeof ShellCoursesRouteWithChildren
+  ShellFavoritesRoute: typeof ShellFavoritesRoute
+  ShellFinanceRoute: typeof ShellFinanceRoute
+  ShellHelpRoute: typeof ShellHelpRoute
+  ShellHistoryRoute: typeof ShellHistoryRoute
+  ShellMaterialsRoute: typeof ShellMaterialsRoute
+  ShellMyCoursesRoute: typeof ShellMyCoursesRoute
+  ShellNotificationsRoute: typeof ShellNotificationsRoute
+  ShellProfileRoute: typeof ShellProfileRoute
+  ShellProgressRoute: typeof ShellProgressRoute
+  ShellScheduleRoute: typeof ShellScheduleRoute
+  ShellSettingsRoute: typeof ShellSettingsRoute
+  ShellSubscriptionsRoute: typeof ShellSubscriptionsRoute
+  ShellIndexRoute: typeof ShellIndexRoute
+  ShellLessonsIdRoute: typeof ShellLessonsIdRoute
+}
+
+const ShellRouteChildren: ShellRouteChildren = {
+  ShellCartRoute: ShellCartRoute,
+  ShellCertificatesRoute: ShellCertificatesRoute,
+  ShellChatRoute: ShellChatRoute,
+  ShellCheckoutRoute: ShellCheckoutRoute,
+  ShellCommunityRoute: ShellCommunityRoute,
+  ShellCoursesRoute: ShellCoursesRouteWithChildren,
+  ShellFavoritesRoute: ShellFavoritesRoute,
+  ShellFinanceRoute: ShellFinanceRoute,
+  ShellHelpRoute: ShellHelpRoute,
+  ShellHistoryRoute: ShellHistoryRoute,
+  ShellMaterialsRoute: ShellMaterialsRoute,
+  ShellMyCoursesRoute: ShellMyCoursesRoute,
+  ShellNotificationsRoute: ShellNotificationsRoute,
+  ShellProfileRoute: ShellProfileRoute,
+  ShellProgressRoute: ShellProgressRoute,
+  ShellScheduleRoute: ShellScheduleRoute,
+  ShellSettingsRoute: ShellSettingsRoute,
+  ShellSubscriptionsRoute: ShellSubscriptionsRoute,
+  ShellIndexRoute: ShellIndexRoute,
+  ShellLessonsIdRoute: ShellLessonsIdRoute,
+}
+
+const ShellRouteWithChildren = ShellRoute._addFileChildren(ShellRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
+  ShellRoute: ShellRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
