@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ShellRouteImport } from './routes/_shell'
 import { Route as ShellIndexRouteImport } from './routes/_shell.index'
 import { Route as ShellCoursesRouteImport } from './routes/_shell.courses'
+import { Route as ShellCoursesIdRouteImport } from './routes/_shell.courses.$id'
 
 const ShellRoute = ShellRouteImport.update({
   id: '/_shell',
@@ -27,27 +28,40 @@ const ShellCoursesRoute = ShellCoursesRouteImport.update({
   path: '/courses',
   getParentRoute: () => ShellRoute,
 } as any)
+const ShellCoursesIdRoute = ShellCoursesIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => ShellCoursesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof ShellIndexRoute
-  '/courses': typeof ShellCoursesRoute
+  '/courses': typeof ShellCoursesRouteWithChildren
+  '/courses/$id': typeof ShellCoursesIdRoute
 }
 export interface FileRoutesByTo {
-  '/courses': typeof ShellCoursesRoute
+  '/courses': typeof ShellCoursesRouteWithChildren
   '/': typeof ShellIndexRoute
+  '/courses/$id': typeof ShellCoursesIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_shell': typeof ShellRouteWithChildren
-  '/_shell/courses': typeof ShellCoursesRoute
+  '/_shell/courses': typeof ShellCoursesRouteWithChildren
   '/_shell/': typeof ShellIndexRoute
+  '/_shell/courses/$id': typeof ShellCoursesIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/courses'
+  fullPaths: '/' | '/courses' | '/courses/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/courses' | '/'
-  id: '__root__' | '/_shell' | '/_shell/courses' | '/_shell/'
+  to: '/courses' | '/' | '/courses/$id'
+  id:
+    | '__root__'
+    | '/_shell'
+    | '/_shell/courses'
+    | '/_shell/'
+    | '/_shell/courses/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -77,16 +91,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShellCoursesRouteImport
       parentRoute: typeof ShellRoute
     }
+    '/_shell/courses/$id': {
+      id: '/_shell/courses/$id'
+      path: '/$id'
+      fullPath: '/courses/$id'
+      preLoaderRoute: typeof ShellCoursesIdRouteImport
+      parentRoute: typeof ShellCoursesRoute
+    }
   }
 }
 
+interface ShellCoursesRouteChildren {
+  ShellCoursesIdRoute: typeof ShellCoursesIdRoute
+}
+
+const ShellCoursesRouteChildren: ShellCoursesRouteChildren = {
+  ShellCoursesIdRoute: ShellCoursesIdRoute,
+}
+
+const ShellCoursesRouteWithChildren = ShellCoursesRoute._addFileChildren(
+  ShellCoursesRouteChildren,
+)
+
 interface ShellRouteChildren {
-  ShellCoursesRoute: typeof ShellCoursesRoute
+  ShellCoursesRoute: typeof ShellCoursesRouteWithChildren
   ShellIndexRoute: typeof ShellIndexRoute
 }
 
 const ShellRouteChildren: ShellRouteChildren = {
-  ShellCoursesRoute: ShellCoursesRoute,
+  ShellCoursesRoute: ShellCoursesRouteWithChildren,
   ShellIndexRoute: ShellIndexRoute,
 }
 

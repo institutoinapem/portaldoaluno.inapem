@@ -124,7 +124,7 @@ function CourseDetail() {
           <Card><CardContent className="p-6 space-y-3">
             <h3 className="font-bold">Objetivos</h3>
             <ul className="grid sm:grid-cols-2 gap-2 text-sm">
-              {course.objectives.map((o) => (
+              {course.objectives.map((o: string) => (
                 <li key={o} className="flex items-start gap-2"><CheckCircle2 className="mt-0.5 h-4 w-4 text-success shrink-0" /> {o}</li>
               ))}
             </ul>
@@ -133,7 +133,7 @@ function CourseDetail() {
             <Card><CardContent className="p-6 space-y-2">
               <h3 className="font-bold">Requisitos</h3>
               <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
-                {course.requirements.map((r) => <li key={r}>{r}</li>)}
+                {course.requirements.map((r: string) => <li key={r}>{r}</li>)}
               </ul>
             </CardContent></Card>
             <Card><CardContent className="p-6 space-y-2">
