@@ -1,5 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { GraduationCap, Search, Bell, Sun, Moon, ShoppingCart, Menu } from "lucide-react";
+import { Search, Bell, Sun, Moon, ShoppingCart, Menu } from "lucide-react";
+import logoInapem from "@/assets/logo_inapem.asset.json";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
