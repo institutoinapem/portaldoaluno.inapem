@@ -48,13 +48,13 @@ export function TopBar({ onToggleSidebar }: { onToggleSidebar: () => void }) {
           </Button>
 
           <Button asChild variant="ghost" className="hidden sm:inline-flex">
-            <Link to="/">
+            <Link to="/auth">
               <LogIn className="mr-2 h-4 w-4" />
               Entrar
             </Link>
           </Button>
           <Button asChild>
-            <Link to="/">Inscreva-se</Link>
+            <Link to="/auth">Inscreva-se</Link>
           </Button>
         </div>
       </div>

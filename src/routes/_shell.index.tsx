@@ -39,10 +39,10 @@ function Home() {
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
               <Button size="lg" asChild>
-                <Link to="/"><UserPlus className="mr-2 h-4 w-4" />Inscreva-se</Link>
+                <Link to="/auth"><UserPlus className="mr-2 h-4 w-4" />Inscreva-se</Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link to="/"><LogIn className="mr-2 h-4 w-4" />Entrar</Link>
+                <Link to="/auth"><LogIn className="mr-2 h-4 w-4" />Entrar</Link>
               </Button>
               <Button size="lg" variant="ghost" asChild>
                 <Link to="/courses"><PlayCircle className="mr-2 h-4 w-4" />Explorar cursos</Link>
@@ -102,8 +102,8 @@ function Home() {
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <Button asChild variant="outline"><Link to="/"><LogIn className="mr-2 h-4 w-4" />Entrar</Link></Button>
-            <Button asChild><Link to="/"><UserPlus className="mr-2 h-4 w-4" />Inscreva-se</Link></Button>
+            <Button asChild variant="outline"><Link to="/auth"><LogIn className="mr-2 h-4 w-4" />Entrar</Link></Button>
+            <Button asChild><Link to="/auth"><UserPlus className="mr-2 h-4 w-4" />Inscreva-se</Link></Button>
           </div>
         </CardContent>
       </Card>
