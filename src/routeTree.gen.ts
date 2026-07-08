@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ShellRouteImport } from './routes/_shell'
 import { Route as ShellIndexRouteImport } from './routes/_shell.index'
 import { Route as ShellSubscriptionsRouteImport } from './routes/_shell.subscriptions'
@@ -32,6 +33,11 @@ import { Route as ShellCartRouteImport } from './routes/_shell.cart'
 import { Route as ShellLessonsIdRouteImport } from './routes/_shell.lessons.$id'
 import { Route as ShellCoursesIdRouteImport } from './routes/_shell.courses.$id'
 
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShellRoute = ShellRouteImport.update({
   id: '/_shell',
   getParentRoute: () => rootRouteImport,
@@ -144,6 +150,7 @@ const ShellCoursesIdRoute = ShellCoursesIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof ShellIndexRoute
+  '/auth': typeof AuthRoute
   '/cart': typeof ShellCartRoute
   '/certificates': typeof ShellCertificatesRoute
   '/chat': typeof ShellChatRoute
@@ -166,6 +173,7 @@ export interface FileRoutesByFullPath {
   '/lessons/$id': typeof ShellLessonsIdRoute
 }
 export interface FileRoutesByTo {
+  '/auth': typeof AuthRoute
   '/cart': typeof ShellCartRoute
   '/certificates': typeof ShellCertificatesRoute
   '/chat': typeof ShellChatRoute
@@ -191,6 +199,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_shell': typeof ShellRouteWithChildren
+  '/auth': typeof AuthRoute
   '/_shell/cart': typeof ShellCartRoute
   '/_shell/certificates': typeof ShellCertificatesRoute
   '/_shell/chat': typeof ShellChatRoute
@@ -217,6 +226,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/auth'
     | '/cart'
     | '/certificates'
     | '/chat'
@@ -239,6 +249,7 @@ export interface FileRouteTypes {
     | '/lessons/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/auth'
     | '/cart'
     | '/certificates'
     | '/chat'
@@ -263,6 +274,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/_shell'
+    | '/auth'
     | '/_shell/cart'
     | '/_shell/certificates'
     | '/_shell/chat'
@@ -288,10 +300,18 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   ShellRoute: typeof ShellRouteWithChildren
+  AuthRoute: typeof AuthRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_shell': {
       id: '/_shell'
       path: ''
@@ -511,6 +531,7 @@ const ShellRouteWithChildren = ShellRoute._addFileChildren(ShellRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   ShellRoute: ShellRouteWithChildren,
+  AuthRoute: AuthRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
