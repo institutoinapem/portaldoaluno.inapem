@@ -1,32 +1,19 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import {
-  LayoutDashboard, BookOpen, GraduationCap, Award, TrendingUp, Calendar,
-  MessagesSquare, MessageCircle, Heart, History, CreditCard, Settings,
-  HelpCircle, Bell, ShoppingBag, User,
+  LayoutDashboard, BookOpen, Award, Calendar, MessagesSquare, HelpCircle, Sparkles,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 const nav = [
-  { section: "Aprendizado", items: [
-    { to: "/", label: "Dashboard", icon: LayoutDashboard, exact: true },
+  { section: "Explorar", items: [
+    { to: "/", label: "Início", icon: LayoutDashboard, exact: true },
     { to: "/courses", label: "Cursos disponíveis", icon: BookOpen },
-    { to: "/my-courses", label: "Meus cursos", icon: GraduationCap },
-    { to: "/progress", label: "Progresso", icon: TrendingUp },
     { to: "/certificates", label: "Certificados", icon: Award },
     { to: "/schedule", label: "Agenda", icon: Calendar },
   ]},
-  { section: "Interação", items: [
+  { section: "Instituição", items: [
     { to: "/community", label: "Comunidade", icon: MessagesSquare },
-    { to: "/chat", label: "Chat", icon: MessageCircle },
-    { to: "/notifications", label: "Notificações", icon: Bell },
-    { to: "/favorites", label: "Favoritos", icon: Heart },
-    { to: "/history", label: "Histórico", icon: History },
-  ]},
-  { section: "Conta", items: [
-    { to: "/cart", label: "Carrinho", icon: ShoppingBag },
-    { to: "/finance", label: "Financeiro", icon: CreditCard },
-    { to: "/profile", label: "Perfil", icon: User },
-    { to: "/settings", label: "Configurações", icon: Settings },
     { to: "/help", label: "Ajuda", icon: HelpCircle },
   ]},
 ];
@@ -36,7 +23,6 @@ export function SideNav({ open, onClose }: { open: boolean; onClose: () => void 
 
   return (
     <>
-      {/* Mobile backdrop */}
       {open && (
         <div className="fixed inset-0 z-40 bg-foreground/40 backdrop-blur-sm lg:hidden" onClick={onClose} aria-hidden />
       )}
@@ -80,11 +66,14 @@ export function SideNav({ open, onClose }: { open: boolean; onClose: () => void 
           ))}
 
           <div className="mx-3 mt-4 rounded-xl border bg-gradient-to-br from-brand/10 to-accent/10 p-4">
-            <div className="text-xs font-semibold">Plano Premium</div>
-            <p className="mt-1 text-xs text-muted-foreground">Acesso ilimitado a todos os cursos e certificados.</p>
-            <Link to="/subscriptions" className="mt-3 inline-block text-xs font-semibold text-primary hover:underline">
-              Gerenciar plano →
-            </Link>
+            <div className="flex items-center gap-2 text-xs font-semibold">
+              <Sparkles className="h-3.5 w-3.5 text-brand" /> Acesse todo o conteúdo
+            </div>
+            <p className="mt-1 text-xs text-muted-foreground">Faça login ou crie uma conta gratuita para começar a estudar.</p>
+            <div className="mt-3 flex gap-2">
+              <Button asChild size="sm" className="flex-1"><Link to="/">Entrar</Link></Button>
+              <Button asChild size="sm" variant="outline" className="flex-1"><Link to="/">Criar conta</Link></Button>
+            </div>
           </div>
         </nav>
       </aside>
