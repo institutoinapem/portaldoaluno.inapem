@@ -15,10 +15,10 @@ function Home() {
   const featured = courses;
 
   const stats = [
-    { label: "Cursos no catálogo", value: "120+", icon: BookOpen },
+    { label: "Cursos no catálogo", value: "5+", icon: BookOpen },
     { label: "Alunos formados", value: "8.500", icon: Users },
-    { label: "Certificados emitidos", value: "12.300", icon: Award },
-    { label: "Instituição reconhecida", value: "MEC", icon: ShieldCheck },
+    { label: "Certificados emitidos", value: "8.500", icon: Award },
+    { label: "Experiência", value: "20 anos", icon: ShieldCheck },
   ];
 
   return (

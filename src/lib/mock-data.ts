@@ -38,7 +38,7 @@ export const LEVELS = ["Todos", "Iniciante", "Intermediário", "Avançado"];
 export const courses: Course[] = [
   {
     id: "c1", title: "TDAH – Transtorno do Déficit de Atenção e Hiperatividade", category: "TDAH", level: "Intermediário",
-    instructor: "Profa. Dra. Marina Costa", instructorAvatar: "MC", hours: 180, lessons: 60, students: 1240, rating: 4.9,
+    instructor: "Prof. Antonio Gomes", instructorAvatar: "MC", hours: 180, lessons: 60, students: 1240, rating: 4.9,
     price: 897, promoPrice: 597, cover: covers[0],
     description: "Formação completa para identificação, avaliação e intervenção pedagógica em casos de TDAH em diferentes fases da vida.",
     objectives: ["Compreender as bases neurobiológicas do TDAH", "Aplicar instrumentos de avaliação", "Planejar intervenções pedagógicas", "Orientar famílias e escolas"],
@@ -115,8 +115,8 @@ export const activities = [
 ];
 
 export const certificates = [
-  { id: "cert1", course: "Marketing Digital Estratégico", instructor: "Camila Souza", hours: 24, issued: "12/10/2025", code: "CERT-MKT-2025-8842" },
-  { id: "cert2", course: "Fundamentos de Design", instructor: "Marina Costa", hours: 12, issued: "03/08/2025", code: "CERT-DSG-2025-3341" },
+  { id: "cert1", course: "TDAH", instructor: "Camila Souza", hours: 24, issued: "12/10/2025", code: "CERT-MKT-2025-8842" },
+  { id: "cert2", course: "Autismo", instructor: "Marina Costa", hours: 12, issued: "03/08/2025", code: "CERT-DSG-2025-3341" },
 ];
 
 export const purchases = [
