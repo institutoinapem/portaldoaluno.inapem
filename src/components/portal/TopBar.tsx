@@ -1,6 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Search, Bell, Sun, Moon, ShoppingCart, Menu } from "lucide-react";
-import logoInapem from "@/assets/logo_inapem.asset.json";
+// 1. Altere a extensão (.png, .svg, etc.) para corresponder ao seu arquivo real na pasta assets
+import logoInapem from "@/assets/logo-inapem.jpg"; 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -31,7 +32,7 @@ export function TopBar({ onToggleSidebar }: { onToggleSidebar: () => void }) {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5 shrink-0">
           <img
-            src={logoInapem.url}
+            src={logoInapem} /* 2. Removido o .url, usando a importação diretamente */
             alt="INAPEM"
             className="h-11 w-11 rounded-lg object-contain bg-white ring-1 ring-border shadow-soft"
           />
