@@ -71,8 +71,8 @@ export function SideNav({ open, onClose }: { open: boolean; onClose: () => void 
             </div>
             <p className="mt-1 text-xs text-muted-foreground">Faça login ou crie uma conta gratuita para começar a estudar.</p>
             <div className="mt-3 flex gap-2">
-              <Button asChild size="sm" className="flex-1"><Link to="/">Entrar</Link></Button>
-              <Button asChild size="sm" variant="outline" className="flex-1"><Link to="/">Criar conta</Link></Button>
+              <Button asChild size="sm" className="flex-1"><Link to="/auth">Entrar</Link></Button>
+              <Button asChild size="sm" variant="outline" className="flex-1"><Link to="/auth">Criar conta</Link></Button>
             </div>
           </div>
         </nav>
