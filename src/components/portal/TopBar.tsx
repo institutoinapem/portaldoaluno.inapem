@@ -28,12 +28,14 @@ export function TopBar({ onToggleSidebar }: { onToggleSidebar: () => void }) {
         </Button>
 
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 shrink-0">
-          <div className="grid h-9 w-9 place-items-center rounded-lg bg-brand text-brand-foreground shadow-soft">
-            <GraduationCap className="h-5 w-5" />
-          </div>
+        <Link to="/" className="flex items-center gap-2.5 shrink-0">
+          <img
+            src={logoInapem.url}
+            alt="INAPEM"
+            className="h-11 w-11 rounded-lg object-contain bg-white ring-1 ring-border shadow-soft"
+          />
           <div className="hidden sm:flex flex-col leading-tight">
-            <span className="text-sm font-bold tracking-tight">Instituto Lumen</span>
+            <span className="text-sm font-bold tracking-tight text-brand">INAPEM</span>
             <span className="text-[10px] uppercase tracking-widest text-muted-foreground">Portal do Aluno</span>
           </div>
         </Link>
