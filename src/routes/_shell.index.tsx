@@ -80,14 +80,6 @@ function Home() {
         ))}
       </HScroll>
 
-      {/* Destaques (horizontal) */}
-      <HScroll title="Em destaque" subtitle="Os mais procurados pelos alunos" seeAllTo="/courses">
-        {highlights.map((c) => (
-          <div key={c.id} className="snap-start">
-            <CourseCard course={c} />
-          </div>
-        ))}
-      </HScroll>
 
       {/* CTA final */}
       <Card>
