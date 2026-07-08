@@ -12,8 +12,7 @@ export const Route = createFileRoute("/_shell/")({
 });
 
 function Home() {
-  const featured = courses.slice(0, 8);
-  const highlights = courses.slice(0, 6);
+  const featured = courses;
 
   const stats = [
     { label: "Cursos no catálogo", value: "120+", icon: BookOpen },
