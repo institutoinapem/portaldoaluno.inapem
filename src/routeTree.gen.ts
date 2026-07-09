@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as MinhaContaRouteImport } from './routes/minha-conta'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ShellRouteImport } from './routes/_shell'
 import { Route as ShellIndexRouteImport } from './routes/_shell.index'
@@ -33,6 +34,11 @@ import { Route as ShellCartRouteImport } from './routes/_shell.cart'
 import { Route as ShellLessonsIdRouteImport } from './routes/_shell.lessons.$id'
 import { Route as ShellCoursesIdRouteImport } from './routes/_shell.courses.$id'
 
+const MinhaContaRoute = MinhaContaRouteImport.update({
+  id: '/minha-conta',
+  path: '/minha-conta',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
@@ -151,6 +157,7 @@ const ShellCoursesIdRoute = ShellCoursesIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof ShellIndexRoute
   '/auth': typeof AuthRoute
+  '/minha-conta': typeof MinhaContaRoute
   '/cart': typeof ShellCartRoute
   '/certificates': typeof ShellCertificatesRoute
   '/chat': typeof ShellChatRoute
@@ -174,6 +181,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
+  '/minha-conta': typeof MinhaContaRoute
   '/cart': typeof ShellCartRoute
   '/certificates': typeof ShellCertificatesRoute
   '/chat': typeof ShellChatRoute
@@ -200,6 +208,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_shell': typeof ShellRouteWithChildren
   '/auth': typeof AuthRoute
+  '/minha-conta': typeof MinhaContaRoute
   '/_shell/cart': typeof ShellCartRoute
   '/_shell/certificates': typeof ShellCertificatesRoute
   '/_shell/chat': typeof ShellChatRoute
@@ -227,6 +236,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/auth'
+    | '/minha-conta'
     | '/cart'
     | '/certificates'
     | '/chat'
@@ -250,6 +260,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/auth'
+    | '/minha-conta'
     | '/cart'
     | '/certificates'
     | '/chat'
@@ -275,6 +286,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/_shell'
     | '/auth'
+    | '/minha-conta'
     | '/_shell/cart'
     | '/_shell/certificates'
     | '/_shell/chat'
@@ -301,10 +313,18 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   ShellRoute: typeof ShellRouteWithChildren
   AuthRoute: typeof AuthRoute
+  MinhaContaRoute: typeof MinhaContaRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/minha-conta': {
+      id: '/minha-conta'
+      path: '/minha-conta'
+      fullPath: '/minha-conta'
+      preLoaderRoute: typeof MinhaContaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/auth': {
       id: '/auth'
       path: '/auth'
@@ -532,7 +552,18 @@ const ShellRouteWithChildren = ShellRoute._addFileChildren(ShellRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   ShellRoute: ShellRouteWithChildren,
   AuthRoute: AuthRoute,
+  MinhaContaRoute: MinhaContaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
