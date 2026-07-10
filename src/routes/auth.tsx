@@ -92,13 +92,12 @@ function AuthPage() {
           role: "student" 
         });
 
-        setSuccessMsg("Conta criada com sucesso! Redirecionando para o acesso...");
+        setSuccessMsg("Conta criada com sucesso! Entrando no portal...");
         
-        // Transição animada de aba pós-cadastro bem-sucedido
+        // Redireciona direto para a página inicial, pois o Firebase já logou o usuário automaticamente
         setTimeout(() => {
-          setTab("signin");
-          setSuccessMsg(null);
-        }, 2500);
+          navigate({ to: "/" });
+        }, 1500);
 
       } else {
         // Fluxo de Login no Firebase Authentication
