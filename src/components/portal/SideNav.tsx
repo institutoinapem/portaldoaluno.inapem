@@ -1,9 +1,8 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import {
-  LayoutDashboard, BookOpen, Award, Calendar, MessagesSquare, HelpCircle, Sparkles,
+  LayoutDashboard, BookOpen, Award, Calendar, MessagesSquare, HelpCircle
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 
 const nav = [
   { section: "Explorar", items: [
@@ -64,17 +63,6 @@ export function SideNav({ open, onClose }: { open: boolean; onClose: () => void 
               </ul>
             </div>
           ))}
-
-          <div className="mx-3 mt-4 rounded-xl border bg-gradient-to-br from-brand/10 to-accent/10 p-4">
-            <div className="flex items-center gap-2 text-xs font-semibold">
-              <Sparkles className="h-3.5 w-3.5 text-brand" /> Acesse todo o conteúdo
-            </div>
-            <p className="mt-1 text-xs text-muted-foreground">Faça login ou crie uma conta gratuita para começar a estudar.</p>
-            <div className="mt-3 flex gap-2">
-              <Button asChild size="sm" className="flex-1"><Link to="/auth">Entrar</Link></Button>
-              <Button asChild size="sm" variant="outline" className="flex-1"><Link to="/auth">Criar conta</Link></Button>
-            </div>
-          </div>
         </nav>
       </aside>
     </>
